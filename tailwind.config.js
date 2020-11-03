@@ -4,9 +4,7 @@ module.exports = {
     // purgeLayersByDefault: true,
   },
   purge: [],
-  theme: {
-    extend: {}
-  },
+  theme: {},
   variants: {},
-  plugins: []
+  plugins: [require("@tailwindcss/custom-forms")]
 };
