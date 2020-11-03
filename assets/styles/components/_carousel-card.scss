@@ -1,0 +1,25 @@
+#parent {
+  transition: all 0.4s ease-in-out;
+}
+
+.carousel-card {
+  display: flex;
+  height: 320px;
+  width: 100%;
+  background-color: aqua;
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(200%);
+  transition: all 0.4s ease-in-out;
+}
+
+#parent:hover .hover-text {
+  transform: translateY(0);
+}

@@ -1,52 +1,111 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        galery-test
-      </h1>
+    <div class="carousel bg-orange-400">
+      <div class="carousel-wrapper">
+        <section class="cards" id="parent">
+          <img :src="`/images/cards/arbol.jpg`" alt="" />
+          <div class="hover-text">
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Dignissimos quod dolorum rem fuga facere repudiandae voluptas.
+            </p>
+          </div>
+        </section>
+        <section class="cards" id="parent">
+          <img :src="`/images/cards/lago.jpg`" alt="" />
+          <div class="hover-text">
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Dignissimos quod dolorum rem fuga facere repudiandae voluptas.
+            </p>
+          </div>
+        </section>
+        <section class="cards" id="parent">
+          <img :src="`/images/cards/muelle.jpg`" alt="" />
+          <div class="hover-text">
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Dignissimos quod dolorum rem fuga facere repudiandae voluptas.
+            </p>
+          </div>
+        </section>
+        <section class="cards" id="parent">
+          <img :src="`/images/cards/piedras.jpg`" alt="" />
+          <div class="hover-text">
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Dignissimos quod dolorum rem fuga facere repudiandae voluptas.
+            </p>
+          </div>
+        </section>
+        <section class="cards" id="parent">
+          <img :src="`/images/cards/road.jpg`" alt="" />
+          <div class="hover-text">
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Dignissimos quod dolorum rem fuga facere repudiandae voluptas.
+            </p>
+          </div>
+        </section>
+      </div>
+      <div class="controls absolute">
+        <span class="arrow prev">
+          prev
+        </span>
+        <span class="arrow next">
+          next
+        </span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import CarouselCard from "~/components/CarouselCard.vue";
+export default {
+  name: "ProductsCarousel",
+  data: () => ({}),
+  components: {
+    CarouselCard
+  },
+  methods: {
+    controlSlider() {
+      const slider = document.querySelector(".carousel-wrapper");
+      const prev = document.querySelector(".prev");
+      const next = document.querySelector(".next");
+
+      var direction;
+
+      prev.addEventListener("click", function() {
+        if (direction === -1) {
+          slider.appendChild(slider.firstElementChild);
+          direction = 1;
+        }
+        slider.style.transform = `"translate(${slider.style.width}px)"`;
+      });
+
+      next.addEventListener("click", function() {
+        direction = -1;
+        slider.style.transform = `"translate(-${slider.style.width}px)"`;
+      });
+
+      slider.addEventListener("transitionend", function() {
+        if (direction === -1) {
+          slider.appendChild(slider.firstElementChild);
+        } else if (direction === 1) {
+          slider.prepend(slider.lastElementChild);
+        }
+
+        slider.style.transition = "none";
+        slider.style.transform = "translate(0)";
+        setTimeout(function() {
+          slider.style.transition = "all 0.5s";
+        });
+      });
+    }
+  },
+  mounted() {
+    this.controlSlider();
+  }
+};
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
