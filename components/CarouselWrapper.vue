@@ -73,28 +73,30 @@ export default {
           direction = 1;
         }
         console.log("click");
-        slider.style.transform = `"translate(${slider.style.width}px)"`;
+        slider.style.transform = "translate(-240px)";
       });
 
       next.addEventListener("click", function() {
         direction = -1;
-        console.log("click");
-        slider.style.transform = `"translate(-${slider.style.width}px)"`;
+
+        slider.style.transform = "translate(240px)";
       });
 
-      slider.addEventListener("transitionend", function() {
-        if (direction === -1) {
-          slider.appendChild(slider.firstElementChild);
-        } else if (direction === 1) {
-          slider.prepend(slider.lastElementChild);
-        }
-        console.log("Estoy loco");
+      slider.addEventListener("transitionend", function(e, o) {
+        if (e.propertyName === "transform") {
+          debugger;
+          if (direction === -1) {
+            slider.appendChild(slider.firstElementChild);
+          } else if (direction === 1) {
+            slider.prepend(slider.lastElementChild);
+          }
 
-        slider.style.transition = "none";
-        slider.style.transform = "translate(0)";
-        setTimeout(function() {
-          slider.style.transition = "all 0.5s";
-        });
+          slider.style.transition = "none";
+          slider.style.transform = "translate(0)";
+          setTimeout(function() {
+            slider.style.transition = "all 1s";
+          });
+        }
       });
     },
     emitValue(url) {
