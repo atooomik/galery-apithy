@@ -14,7 +14,7 @@
         class="mx-2 text-xl"
         :class="{
           'text-ui-brand': scrollState === 'isFarFromTop',
-          'text-ui-textContrast': scrollState === 'isInTop'
+          'text-ui-textContrast': scrollState === 'isInTop',
         }"
       >
         Pic'Story
@@ -27,7 +27,7 @@
         'bg-ui-textContrast': scrollState === 'isInTop',
         'text-ui-brand': scrollState === 'isInTop',
         'bg-ui-brand': scrollState === 'isFarFromTop',
-        'text-ui-textContrast': scrollState === 'isFarFromTop'
+        'text-ui-textContrast': scrollState === 'isFarFromTop',
       }"
       @click="openMenu"
     >
@@ -57,7 +57,7 @@
             class="flex items-center"
             :class="{
               'text-ui-brand': scrollState === 'isFarFromTop',
-              'text-ui-textContrast': scrollState === 'isInTop'
+              'text-ui-textContrast': scrollState === 'isInTop',
             }"
           >
             <fa-icon class="mx-4" :icon="['fas', 'sign-in-alt']" />
@@ -69,7 +69,7 @@
             class="flex items-center"
             :class="{
               'text-ui-brand': scrollState === 'isFarFromTop',
-              'text-ui-textContrast': scrollState === 'isInTop'
+              'text-ui-textContrast': scrollState === 'isInTop',
             }"
           >
             <fa-icon class="mx-4" :icon="['fas', 'folder-plus']" />
@@ -86,7 +86,7 @@ export default {
   name: "TheHeader",
   data: () => ({
     showMenu: false,
-    scrollState: "isInTop"
+    scrollState: "isInTop",
   }),
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
@@ -107,7 +107,7 @@ export default {
     },
     openMenu() {
       this.showMenu = !this.showMenu;
-    }
-  }
+    },
+  },
 };
 </script>

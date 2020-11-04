@@ -3,17 +3,17 @@
     <div class="carousel">
       <span class="arrow prev">
         <fa-icon
-          class=" text-3xl text-ui-brand"
+          class="text-3xl text-ui-brand"
           :icon="['fas', 'caret-square-left']"
         />
       </span>
 
       <div class="carousel-wrapper">
         <div
-          class="cards"
-          id="parent"
           v-for="(item, i) in colection"
+          id="parent"
           :key="i"
+          class="cards"
           @click="emitValue(item)"
         >
           <img
@@ -32,7 +32,7 @@
 
       <span class="arrow next">
         <fa-icon
-          class=" text-3xl text-ui-brand"
+          class="text-3xl text-ui-brand"
           :icon="['fas', 'caret-square-right']"
         />
       </span>
@@ -47,7 +47,7 @@ export default {
     showModal: false,
     api: "https://picsum.photos/v2/list",
     colection: [],
-    selectedImg: ""
+    selectedImg: "",
   }),
   mounted() {
     this.controlSlider();
@@ -56,13 +56,13 @@ export default {
   methods: {
     getLibrary() {
       fetch(this.api)
-        .then(response => {
+        .then((response) => {
           if (response.status === 200) return response.json();
         })
-        .then(data => {
+        .then((data) => {
           this.colection = data;
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
@@ -70,15 +70,14 @@ export default {
       /*
       El carousel que se construyo para el proyecto, funciona a partir de la manipulación de la propiedad transform/translate, creando asi un desplazamiento sobre el eje interno X.
       */
-
       const slider = document.querySelector(".carousel-wrapper");
       const prev = document.querySelector(".prev");
       const next = document.querySelector(".next");
-      var direction;
+      let direction;
       /*
       Este movimiento se dispara al escuchar el evento click de los botones previamente maquetados y se utiliza una variable "direction" para orientar el sentido del movimiento y asi poder recalcular cuales son los primeros y ultimos elementos del carousel, de esta forma se logra el comportamiento ciclico esperado.
       */
-      prev.addEventListener("click", function() {
+      prev.addEventListener("click", function () {
         if (direction === -1) {
           slider.appendChild(slider.firstElementChild);
           direction = 1;
@@ -87,7 +86,7 @@ export default {
         slider.style.transform = "translate(-240px)";
       });
 
-      next.addEventListener("click", function() {
+      next.addEventListener("click", function () {
         direction = -1;
 
         slider.style.transform = "translate(240px)";
@@ -95,7 +94,7 @@ export default {
       /*
       Considerando al evento como un objeto, evaluamos su propiedad name, para crear una condicional estricta que dispare el movimiento en el unico caso deseado, evitando asi que haya un conflicto con otros "transitionend" que esten en el target del elemento padre, como estuvo sucediendo con el opacity.
       */
-      slider.addEventListener("transitionend", function(e, o) {
+      slider.addEventListener("transitionend", function (e, o) {
         if (e.propertyName === "transform") {
           if (direction === -1) {
             slider.appendChild(slider.firstElementChild);
@@ -105,7 +104,7 @@ export default {
 
           slider.style.transition = "none";
           slider.style.transform = "translate(0)";
-          setTimeout(function() {
+          setTimeout(function () {
             slider.style.transition = "all 1s";
           });
         }
@@ -117,7 +116,7 @@ export default {
     emitValue(url) {
       this.selectedImg = url;
       this.$emit("deploy", this.selectedImg);
-    }
-  }
+    },
+  },
 };
 </script>

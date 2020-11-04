@@ -58,6 +58,6 @@ export default {
   name: "ContributionsView",
   data: () => ({}),
 
-  transition: "slide-fade"
+  transition: "slide-fade",
 };
 </script>

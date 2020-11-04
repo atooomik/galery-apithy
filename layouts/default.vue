@@ -1,5 +1,5 @@
 <template>
-  <div class=" max-w-6xl mx-auto">
+  <div class="max-w-6xl mx-auto">
     <the-header />
     <Nuxt class="pt-16" />
     <the-footer />
@@ -12,7 +12,7 @@ import TheFooter from "~/components/TheFooter.vue";
 export default {
   components: {
     TheHeader,
-    TheFooter
-  }
+    TheFooter,
+  },
 };
 </script>

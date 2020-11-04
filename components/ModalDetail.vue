@@ -8,7 +8,7 @@
       <div
         class="absolute top-0 right-0 z-10 flex justify-center py-2 px-4 bg-ui-brand"
       >
-        <button class=" text-ui-textContrast" @click="closeDetail">
+        <button class="text-ui-textContrast" @click="closeDetail">
           <fa-icon class="text-2xl" :icon="['fas', 'times-circle']" />
         </button>
       </div>
@@ -33,13 +33,14 @@ export default {
   props: {
     selection: {
       type: Object,
-      default: {}
-    }
+      // eslint-disable-next-line vue/require-valid-default-prop
+      default: {},
+    },
   },
   methods: {
     closeDetail() {
       this.$emit("closeDetail");
-    }
-  }
+    },
+  },
 };
 </script>

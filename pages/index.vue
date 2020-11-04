@@ -39,14 +39,14 @@ import CarouselWrapper from "~/components/CarouselWrapper.vue";
 import ModalDetail from "~/components/ModalDetail.vue";
 export default {
   name: "Home",
-  data: () => ({
-    hasSelection: false,
-    selectedPhoto: {}
-  }),
   components: {
     CarouselWrapper,
-    ModalDetail
+    ModalDetail,
   },
+  data: () => ({
+    hasSelection: false,
+    selectedPhoto: {},
+  }),
   methods: {
     /*
       Con esta función recibo el objeto que fue mandado desde la card en CarouselWrapper y lo guardo  en una propiedad que es un objeto originalmente vacio, de esta forma pongo disponible el objeto para los props de la modal, quien al recibirlo puede consumirlo e iterar dentro de el.
@@ -54,7 +54,7 @@ export default {
     openModal(selectedImg) {
       this.hasSelection = true;
       this.selectedPhoto = selectedImg;
-    }
-  }
+    },
+  },
 };
 </script>

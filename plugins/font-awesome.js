@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import {
   faFacebookSquare,
-  faDiscord
+  faDiscord,
 } from "@fortawesome/free-brands-svg-icons";
 
 import {
@@ -17,7 +17,7 @@ import {
   faEnvelope,
   faMapMarkedAlt,
   faPhoneSquareAlt,
-  faTimesCircle
+  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 config.showMissingIcons = true;
