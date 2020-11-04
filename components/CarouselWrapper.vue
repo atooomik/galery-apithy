@@ -61,7 +61,6 @@ export default {
         })
         .then(data => {
           this.colection = data;
-          console.log(this.colection);
         })
         .catch(error => {
           console.log(error);
@@ -78,7 +77,7 @@ export default {
           slider.appendChild(slider.firstElementChild);
           direction = 1;
         }
-        console.log("click");
+
         slider.style.transform = "translate(-240px)";
       });
 
@@ -112,5 +111,3 @@ export default {
   }
 };
 </script>
-
-<style></style>

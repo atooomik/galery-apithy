@@ -96,21 +96,17 @@ export default {
     updateScroll() {
       if (window.scrollY < 100) {
         this.scrollState = "isInTop";
-        //console.log(this.scrollState);
       } else if (window.scrollY > 100) {
         this.scrollState = "isFarFromTop";
-        //console.log(this.scrollState);
       }
     },
     navigationHasStarted() {
       if (window.scrollY > 200) {
         this.scrollState = "isFarFromTop";
-        console.log("It's working");
       }
     },
     openMenu() {
       this.showMenu = !this.showMenu;
-      console.log("I`m working");
     }
   }
 };

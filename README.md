@@ -1,4 +1,17 @@
-# galery-test
+# Pic'Story
+
+```bash
+#Autor del proyecto:
+Isacc Núñez [atoomik]
+
+#Stack del proyecto:
+Vue
+Nuxt
+Sass
+TailwindCSS
+TailwindCustomForms
+FontAwesome
+```
 
 ## Build Setup
 
@@ -16,5 +29,3 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
