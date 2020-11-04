@@ -67,11 +67,17 @@ export default {
         });
     },
     controlSlider() {
+      /*
+      El carousel que se construyo para el proyecto, funciona a partir de la manipulación de la propiedad transform/translate, creando asi un desplazamiento sobre el eje interno X.
+      */
+
       const slider = document.querySelector(".carousel-wrapper");
       const prev = document.querySelector(".prev");
       const next = document.querySelector(".next");
       var direction;
-
+      /*
+      Este movimiento se dispara al escuchar el evento click de los botones previamente maquetados y se utiliza una variable "direction" para orientar el sentido del movimiento y asi poder recalcular cuales son los primeros y ultimos elementos del carousel, de esta forma se logra el comportamiento ciclico esperado.
+      */
       prev.addEventListener("click", function() {
         if (direction === -1) {
           slider.appendChild(slider.firstElementChild);
@@ -86,10 +92,11 @@ export default {
 
         slider.style.transform = "translate(240px)";
       });
-
+      /*
+      Considerando al evento como un objeto, evaluamos su propiedad name, para crear una condicional estricta que dispare el movimiento en el unico caso deseado, evitando asi que haya un conflicto con otros "transitionend" que esten en el target del elemento padre, como estuvo sucediendo con el opacity.
+      */
       slider.addEventListener("transitionend", function(e, o) {
         if (e.propertyName === "transform") {
-          debugger;
           if (direction === -1) {
             slider.appendChild(slider.firstElementChild);
           } else if (direction === 1) {
@@ -104,6 +111,9 @@ export default {
         }
       });
     },
+    /*
+      Esta funcion tiene dos tareas muy importantes, se establece un parametro que va servir para recuperar el objeto del index que estamos "seleccionando, y manda ese objeto al componente superior, quien necesita estos datos para pintarlos en otro componente"
+      */
     emitValue(url) {
       this.selectedImg = url;
       this.$emit("deploy", this.selectedImg);

@@ -48,6 +48,9 @@ export default {
     ModalDetail
   },
   methods: {
+    /*
+      Con esta función recibo el objeto que fue mandado desde la card en CarouselWrapper y lo guardo  en una propiedad que es un objeto originalmente vacio, de esta forma pongo disponible el objeto para los props de la modal, quien al recibirlo puede consumirlo e iterar dentro de el.
+      */
     openModal(selectedImg) {
       this.hasSelection = true;
       this.selectedPhoto = selectedImg;
