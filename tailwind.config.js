@@ -4,7 +4,15 @@ module.exports = {
     // purgeLayersByDefault: true,
   },
   purge: [],
-  theme: {},
+  theme: {
+    colors: {
+      ui: {
+        brand: "#489a71",
+        contrast: "#212529",
+        textContrast: "#fff"
+      }
+    }
+  },
   variants: {},
   plugins: [require("@tailwindcss/custom-forms")]
 };
