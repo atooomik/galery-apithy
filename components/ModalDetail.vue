@@ -14,7 +14,7 @@
       </div>
       <img
         class="absolute h-full w-full object-cover"
-        :src="selection.download_url"
+        :src="`https://picsum.photos/id/${selection.id}/500/500.webp`"
         alt="Detalle expandida"
       />
       <div class="absolute bottom-0 w-full bg-ui-brand">

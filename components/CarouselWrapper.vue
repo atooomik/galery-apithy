@@ -18,9 +18,10 @@
         >
           <img
             class="w-full h-full object-cover"
-            :src="`${item.download_url}`"
+            :src="`https://picsum.photos/id/${item.id}/300/300.webp`"
             alt="Fotografia miniatura"
           />
+
           <div class="hover-text">
             <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -45,7 +46,7 @@ export default {
   name: "CarouselWrapper",
   data: () => ({
     showModal: false,
-    api: "https://picsum.photos/v2/list",
+    api: "https://picsum.photos/v2/list?limit=15",
     colection: [],
     selectedImg: "",
   }),
