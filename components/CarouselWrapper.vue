@@ -2,7 +2,10 @@
   <div class="container">
     <div class="carousel">
       <span class="arrow prev">
-        prev
+        <fa-icon
+          class=" text-3xl text-ui-brand"
+          :icon="['fas', 'caret-square-left']"
+        />
       </span>
 
       <div class="carousel-wrapper">
@@ -28,7 +31,10 @@
       </div>
 
       <span class="arrow next">
-        next
+        <fa-icon
+          class=" text-3xl text-ui-brand"
+          :icon="['fas', 'caret-square-right']"
+        />
       </span>
     </div>
   </div>
