@@ -16,7 +16,8 @@ import {
   faCaretSquareLeft,
   faEnvelope,
   faMapMarkedAlt,
-  faPhoneSquareAlt
+  faPhoneSquareAlt,
+  faTimesCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 config.showMissingIcons = true;
@@ -31,7 +32,8 @@ library.add(
   faMapMarkedAlt,
   faFacebookSquare,
   faDiscord,
-  faPhoneSquareAlt
+  faPhoneSquareAlt,
+  faTimesCircle
 );
 
 Vue.component("fa-icon", FontAwesomeIcon);

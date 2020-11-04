@@ -1,45 +1,23 @@
 <template>
   <div class="container">
     <div class="carousel">
+      <span class="arrow prev">
+        prev
+      </span>
+
       <div class="carousel-wrapper">
-        <div class="cards" id="parent">
-          <img :src="`/images/cards/arbol.jpg`" alt="" />
-          <div class="hover-text">
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Dignissimos quod dolorum rem fuga facere repudiandae voluptas.
-            </p>
-          </div>
-        </div>
-        <div class="cards" id="parent">
-          <img :src="`/images/cards/lago.jpg`" alt="" />
-          <div class="hover-text">
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Dignissimos quod dolorum rem fuga facere repudiandae voluptas.
-            </p>
-          </div>
-        </div>
-        <div class="cards" id="parent">
-          <img :src="`/images/cards/muelle.jpg`" alt="" />
-          <div class="hover-text">
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Dignissimos quod dolorum rem fuga facere repudiandae voluptas.
-            </p>
-          </div>
-        </div>
-        <div class="cards" id="parent">
-          <img :src="`/images/cards/piedras.jpg`" alt="" />
-          <div class="hover-text">
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Dignissimos quod dolorum rem fuga facere repudiandae voluptas.
-            </p>
-          </div>
-        </div>
-        <div class="cards" id="parent">
-          <img :src="`/images/cards/road.jpg`" alt="" />
+        <div
+          class="cards"
+          id="parent"
+          v-for="(item, i) in colection"
+          :key="i"
+          @click="emitValue(item)"
+        >
+          <img
+            class="w-full h-full object-cover"
+            :src="`${item.download_url}`"
+            alt=""
+          />
           <div class="hover-text">
             <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -48,14 +26,10 @@
           </div>
         </div>
       </div>
-      <div class="controls absolute">
-        <span class="arrow prev">
-          prev
-        </span>
-        <span class="arrow next">
-          next
-        </span>
-      </div>
+
+      <span class="arrow next">
+        next
+      </span>
     </div>
   </div>
 </template>
@@ -64,12 +38,29 @@
 export default {
   name: "CarouselWrapper",
   data: () => ({
-    showModal: false
+    showModal: false,
+    api: "https://picsum.photos/v2/list",
+    colection: [],
+    selectedImg: ""
   }),
   mounted() {
     this.controlSlider();
+    this.getLibrary();
   },
   methods: {
+    getLibrary() {
+      fetch(this.api)
+        .then(response => {
+          if (response.status === 200) return response.json();
+        })
+        .then(data => {
+          this.colection = data;
+          console.log(this.colection);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
     controlSlider() {
       const slider = document.querySelector(".carousel-wrapper");
       const prev = document.querySelector(".prev");
@@ -97,6 +88,7 @@ export default {
         } else if (direction === 1) {
           slider.prepend(slider.lastElementChild);
         }
+        console.log("Estoy loco");
 
         slider.style.transition = "none";
         slider.style.transform = "translate(0)";
@@ -105,8 +97,9 @@ export default {
         });
       });
     },
-    openModal() {
-      this.showModal = !this.showModal;
+    emitValue(url) {
+      this.selectedImg = url;
+      this.$emit("deploy", this.selectedImg);
     }
   }
 };

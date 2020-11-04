@@ -1,7 +1,7 @@
 <template>
   <header
     id="header"
-    class="fixed flex justify-between items-center w-full h-16 p-4 z-10 bg-ui-brand"
+    class="fixed max-w-6xl flex justify-between items-center w-full h-16 p-4 z-10 bg-ui-brand"
     :class="{ 'bg-ui-textContrast': scrollState === 'isFarFromTop' }"
   >
     <nuxt-link class="flex items-center" to="/">

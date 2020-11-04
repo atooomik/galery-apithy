@@ -11,7 +11,14 @@
       </p>
     </div>
 
-    <carousel-wrapper />
+    <carousel-wrapper @deploy="openModal" />
+    <div v-if="hasSelection">
+      <modal-detail
+        :selection="selectedPhoto"
+        @closeDetail="hasSelection = false"
+      />
+    </div>
+
     <div class="p-4 text-center text-gray-700">
       <p class="mb-6">
         ¿Deseas que tus fotos sean incluidas en Pic'Story? Visita:
@@ -29,10 +36,22 @@
 
 <script>
 import CarouselWrapper from "~/components/CarouselWrapper.vue";
+import ModalDetail from "~/components/ModalDetail.vue";
 export default {
   name: "Home",
+  data: () => ({
+    hasSelection: false,
+    selectedPhoto: {}
+  }),
   components: {
-    CarouselWrapper
+    CarouselWrapper,
+    ModalDetail
+  },
+  methods: {
+    openModal(selectedImg) {
+      this.hasSelection = true;
+      this.selectedPhoto = selectedImg;
+    }
   }
 };
 </script>
