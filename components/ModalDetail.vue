@@ -15,7 +15,7 @@
       <img
         class="absolute h-full w-full object-cover"
         :src="selection.download_url"
-        alt=""
+        alt="Detalle expandida"
       />
       <div class="absolute bottom-0 w-full bg-ui-brand">
         <p

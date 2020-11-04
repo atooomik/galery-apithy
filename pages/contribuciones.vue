@@ -23,7 +23,7 @@
         <textarea
           class="form-textarea mt-1 block w-full"
           rows="3"
-          placeholder="Maximo 200 caracteres."
+          placeholder="Minimo 50 caracteres / máximo 200."
           maxlength="200"
           minlength="50"
           required

@@ -19,7 +19,7 @@
           <img
             class="w-full h-full object-cover"
             :src="`${item.download_url}`"
-            alt=""
+            alt="Fotografia miniatura"
           />
           <div class="hover-text">
             <p>
