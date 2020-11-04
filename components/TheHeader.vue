@@ -53,13 +53,25 @@
     <nav class="hidden md:flex">
       <ul class="flex">
         <nuxt-link to="/contribuciones">
-          <li class="flex items-center text-ui-textContrast">
+          <li
+            class="flex items-center"
+            :class="{
+              'text-ui-brand': scrollState === 'isFarFromTop',
+              'text-ui-textContrast': scrollState === 'isInTop'
+            }"
+          >
             <fa-icon class="mx-4" :icon="['fas', 'sign-in-alt']" />
             <p>Iniciar sesion</p>
           </li>
         </nuxt-link>
         <nuxt-link to="/contribuciones">
-          <li class="flex items-center text-ui-textContrast">
+          <li
+            class="flex items-center"
+            :class="{
+              'text-ui-brand': scrollState === 'isFarFromTop',
+              'text-ui-textContrast': scrollState === 'isInTop'
+            }"
+          >
             <fa-icon class="mx-4" :icon="['fas', 'folder-plus']" />
             <p>Contribuciones</p>
           </li>
